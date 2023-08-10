@@ -1,4 +1,4 @@
-import express, { Response, Request, NextFunction } from "express";
+import { Response, Request, NextFunction } from "express";
 import User, { IUser } from "../models/user.model";
 import {
   COOKIE_OPTIONS,
@@ -101,7 +101,7 @@ export const getUserById = async (req: Request, res: Response) => {
 };
 
 export const updateUser = async (req: Request, res: Response) => {
-  const userId = req.params.id; 
+  const userId = req.params.id;
 
   try {
     const updatedUser = await User.findByIdAndUpdate(userId, req.body, {
@@ -135,4 +135,3 @@ export const deleteUserById = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Failed to delete user" });
   }
 };
-
